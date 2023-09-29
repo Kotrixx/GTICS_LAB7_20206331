@@ -29,10 +29,10 @@
                             <td th:text="${tenico.phone}"></td>
                             <td th:text="${tenico.age}"></td>
                             <td><a class="btn btn-primary"
-                                   th:href="@{'/product/edit' + '?id=' + ${tenico.id}}">Editar</a>
+                                   th:href="@{'/tecnico/edit' + '?id=' + ${tenico.id}}">Editar</a>
                             </td>
                             <td><a class="btn btn-danger"
-                                   th:href="@{'/product/delete' + '?id=' + ${tenico.id}}">Borrar</a>
+                                   th:href="@{'/tecnico/borrar' + '?id=' + ${tenico.id}}">Borrar</a>
                             </td>
                         </tr>
                     </tbody>
