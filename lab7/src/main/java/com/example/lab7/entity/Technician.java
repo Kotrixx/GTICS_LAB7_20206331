@@ -1,40 +1,44 @@
 package com.example.lab7.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 
 @Entity
 @Table(name = "technician", schema = "gticslab6")
 public class Technician {
     @Id
     @Column(name = "TechnicianID", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Size(max = 100)
     @NotNull
+    @Size(min=3,max = 100, message = "El nombre debe tener entre 3 y 100 caracteres")
     @Column(name = "FirstName", nullable = false, length = 100)
     private String firstName;
 
     @Size(max = 100)
-    @NotNull
+    @NotBlank
+    @Size(min=3,max = 100, message = "El apellido debe tener entre 3 y 100 caracteres")
     @Column(name = "LastName", nullable = false, length = 100)
     private String lastName;
 
-    @Size(max = 8)
-    @NotNull
+    @NotBlank
+    @Digits(integer = 8, fraction = 0)
+    @Max(value = 99999999)
+    @Min(value = 10000000)
     @Column(name = "Dni", nullable = false, length = 8)
     private String dni;
 
     @Size(max = 9)
-    @NotNull
+    @NotBlank
+    @Positive
+    @Digits(integer = 9, fraction = 0)
     @Column(name = "Phone", nullable = false, length = 9)
     private String phone;
 
     @NotNull
+    @Positive
+    @Digits(integer = 3, fraction = 0)
     @Column(name = "Age", nullable = false)
     private Integer age;
 
