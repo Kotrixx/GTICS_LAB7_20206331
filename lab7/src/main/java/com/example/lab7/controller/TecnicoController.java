@@ -30,7 +30,7 @@ public class TecnicoController {
     }
 
     @RequestMapping(value = "/edit")
-    public String listarTecnicos(@ModelAttribute("product") Technician technician,
+    public String editarTecnico(@ModelAttribute("product") Technician technician,
                                  Model model, @RequestParam("id") int id){
 
         Optional<Technician> optionalTechnician = tecnicoRepository.findById(id);
@@ -42,10 +42,16 @@ public class TecnicoController {
             return "tecnicos/lista";
         }
     }
+    @RequestMapping(value = "/nuevo")
+    public String nuevoTecnico(@ModelAttribute("sitio") Technician technician){
 
+        return "product/editFrm";
+    }
     @PostMapping("/guardar")
     public String guardarProducto(RedirectAttributes attr, Model model,
                                   @ModelAttribute("sitio") @Valid Technician technician, BindingResult bindingResult) {
+        model.addAttribute("tecnico", technician);
+
         if (!bindingResult.hasErrors()) { //si no hay errores, se realiza el flujo normal
             /*if (product.getProductname().equals("gaseosa")) {
                 model.addAttribute("msg", "Error al crear producto");

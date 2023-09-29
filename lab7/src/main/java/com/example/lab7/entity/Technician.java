@@ -9,7 +9,7 @@ public class Technician {
     @Id
     @Column(name = "TechnicianID", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private int id;
 
     @NotNull
     @Size(min=3,max = 100, message = "El nombre debe tener entre 3 y 100 caracteres")
@@ -42,11 +42,11 @@ public class Technician {
     @Column(name = "Age", nullable = false)
     private Integer age;
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 

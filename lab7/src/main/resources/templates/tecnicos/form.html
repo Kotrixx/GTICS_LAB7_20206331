@@ -42,19 +42,24 @@
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Telefono</label>
-                    <input th:field="*{phone}" type="text" class="form-control"/>
+                    <input th:field="*{phone}" type="text" class="form-control"
+                           th:classappend="${#fields.hasErrors('dni')?'is-invalid':''}"/>
+                    <div id="validationServer06Feedback" class="invalid-feedback"
+                         th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}">
+                        Mensaje de error de dni
+                    </div>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Edad</label>
                     <input th:field="*{age}" type="text" th:class="${#fields.hasErrors('age')?'form-control is-invalid':'form-control'}"/>
                     <div class="invalid-feedback"
                          th:if="${#fields.hasErrors('age')}" th:errors="*{age}">
-                        Mensaje de error de productName
+                        Mensaje de error de age
                     </div>
                 </div>
                 <a th:href="@{'/tecnico'}" class="btn btn-danger">Cancelar</a>
                 <button type="submit" class="btn btn-primary"
-                        th:text="${product.id==0? 'Guardar':'Actualizar'}">Actualizar
+                        th:text="${tecnico.id==0? 'Guardar':'Actualizar'}">Actualizar
                 </button>
             </form>
         </div>
