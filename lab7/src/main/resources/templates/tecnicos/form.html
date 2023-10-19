@@ -25,7 +25,7 @@
                 <div class="mb-3">
                     <label class="form-label">Apellido</label>
                     <input th:field="*{lastName}" type="text" class="form-control"
-                           th:classappend="${#fields.hasErrors('firstName')?'is-invalid':''}"/>
+                           th:classappend="${#fields.hasErrors('lastName')?'is-invalid':''}"/>
                     <div id="validationServer04Feedback" class="invalid-feedback"
                          th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">
                         Mensaje de error de firstName
@@ -43,7 +43,7 @@
                 <div class="mb-3">
                     <label class="form-label">Telefono</label>
                     <input th:field="*{phone}" type="text" class="form-control"
-                           th:classappend="${#fields.hasErrors('dni')?'is-invalid':''}"/>
+                           th:classappend="${#fields.hasErrors('phone')?'is-invalid':''}"/>
                     <div id="validationServer06Feedback" class="invalid-feedback"
                          th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}">
                         Mensaje de error de dni

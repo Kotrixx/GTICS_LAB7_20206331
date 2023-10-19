@@ -6,7 +6,14 @@
             <div class="container px-4 pb-5">
                 <nav th:replace="~{fragments/navbar.html :: navbar( active = 'Tecnico')}"></nav>
                 <h1 class="pb-2 border-bottom">Lista Tecnicos</h1>
+
+                <a class="btn btn-primary"
+                   th:href="@{/tecnico/nuevo}">Nuevo</a>
+                <br>
+                <br>
                 <!--<a class="btn btn-primary mt-4 mb-4" th:href="@{'/tecnico/nuevo'}">Nuevo Producto</a>-->
+                <div th:if="${msg != null}" th:text="${msg}" class="alert alert-success" role="alert"></div>
+
                 <table class="table">
                     <thead>
                         <tr>

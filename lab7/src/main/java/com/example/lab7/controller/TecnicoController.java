@@ -43,13 +43,13 @@ public class TecnicoController {
         }
     }
     @RequestMapping(value = "/nuevo")
-    public String nuevoTecnico(@ModelAttribute("sitio") Technician technician){
+    public String nuevoTecnico(@ModelAttribute("tecnico") Technician technician){
 
-        return "product/editFrm";
+        return "tecnicos/form";
     }
     @PostMapping("/guardar")
-    public String guardarProducto(RedirectAttributes attr, Model model,
-                                  @ModelAttribute("sitio") @Valid Technician technician, BindingResult bindingResult) {
+    public String guardarProducto(RedirectAttributes attributes, Model model,
+                                  @ModelAttribute("tecnico") @Valid Technician technician, BindingResult bindingResult) {
         model.addAttribute("tecnico", technician);
 
         if (!bindingResult.hasErrors()) { //si no hay errores, se realiza el flujo normal
@@ -67,10 +67,13 @@ public class TecnicoController {
                 productRepository.save(product);
                 return "redirect:/product";
             }*/
+            if(technician.getFirstName().matches("^[a-zA-Z]+$")){
+
+            }
             if (technician.getId() == 0) {
-                attr.addFlashAttribute("msg", "Producto creado exitosamente");
+                attributes.addFlashAttribute("msg", "Tecnico creado exitosamente");
             } else {
-                attr.addFlashAttribute("msg", "Producto actualizado exitosamente");
+                attributes.addFlashAttribute("msg", "Tecnico actualizado exitosamente");
             }
             tecnicoRepository.save(technician);
             return "redirect:/tecnico";

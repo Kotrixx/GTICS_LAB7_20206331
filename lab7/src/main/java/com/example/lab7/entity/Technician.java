@@ -13,32 +13,33 @@ public class Technician {
 
     @NotNull
     @Size(min=3,max = 100, message = "El nombre debe tener entre 3 y 100 caracteres")
+    @Pattern(regexp="^[a-zA-Z]+$",message="Su nombre de debe contener nombres ni digitos")
     @Column(name = "FirstName", nullable = false, length = 100)
     private String firstName;
 
     @Size(max = 100)
     @NotBlank
+    @Pattern(regexp="^[a-zA-Z]+$",message="Su nombre de debe contener nombres ni digitos")
     @Size(min=3,max = 100, message = "El apellido debe tener entre 3 y 100 caracteres")
     @Column(name = "LastName", nullable = false, length = 100)
     private String lastName;
 
-    @NotBlank
-    @Digits(integer = 8, fraction = 0)
-    @Max(value = 99999999)
-    @Min(value = 10000000)
+    @NotBlank(message = "No puede dejar vacio este item")
+    @Max(value = 99999999, message = "DNI incorrecto (8 digitos)")
+    @Min(value = 10000000, message = "DNI incorrecto (8 digitos)")
     @Column(name = "Dni", nullable = false, length = 8)
     private String dni;
 
     @Size(max = 9)
-    @NotBlank
-    @Positive
-    @Digits(integer = 9, fraction = 0)
+    @NotBlank(message = "No puede dejar vacio este item")
+    @Max(value = 99999999, message = "9 digitos")
+    @Min(value = 10000000, message = "9 digitos")
     @Column(name = "Phone", nullable = false, length = 9)
     private String phone;
 
-    @NotNull
-    @Positive
-    @Digits(integer = 3, fraction = 0)
+    @NotNull(message = "No puede dejar vacio este item")
+    @Positive(message = "Debe ingresar un numero postiivo")
+    @Digits(integer = 3, fraction = 0, message = "Solo se admite edades menores a 100")
     @Column(name = "Age", nullable = false)
     private Integer age;
 
